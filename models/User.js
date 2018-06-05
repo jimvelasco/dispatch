@@ -26,3 +26,6 @@ const UserSchema = new Schema({
 });
 
 module.exports = User = mongoose.model("users", UserSchema);
+// the users name is used for passport or when
+// const User = mongoose.model("users");
+// also is the name of the document in mongodb
