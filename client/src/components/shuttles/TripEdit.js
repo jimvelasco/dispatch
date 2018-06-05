@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class TripEdit extends React.Component {
+class TripEdit extends Component {
   render() {
     return (
       <div>

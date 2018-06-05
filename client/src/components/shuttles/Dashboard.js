@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Trips from "./Trips";
 import Shuttles from "./Shuttles";
 
-class Dashboard extends React.Component {
+class Dashboard extends Component {
   render() {
     return (
       <div>
