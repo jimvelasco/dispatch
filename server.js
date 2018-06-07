@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 
+const path = require("path");
+
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
 const posts = require("./routes/api/posts");
@@ -41,6 +43,24 @@ app.use("/api/posts", posts);
 
 app.use("/api/shuttles", shuttles);
 app.use("/api/shuttles/trips", trips);
+
+// Server static assets if in production
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static("client/build"));
+
+  //
+
+  // need module path for this imported at top
+  // so now any requests other than the ones above will go to index.html
+  // find out express app.get(*)
+
+  // any route that gets hit here in client.build will go to index.html
+  app.get("*", (req, res) => {
+    // go to client/build/index.html
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const port = process.env.PORT || 5000;
 
