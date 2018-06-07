@@ -29,7 +29,7 @@ mongoose
   .then(() => console.log("Mongo Connected"))
   .catch(err => console.log(err));
 
-app.get("/", (req, res) => res.send("Hello World.  This is JJV"));
+// app.get("/", (req, res) => res.send("Hello World.  This is JJV"));
 
 // Passport middleware
 app.use(passport.initialize());
