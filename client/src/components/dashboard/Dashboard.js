@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 // we need to get into git
 
-import Trips from "./Trips";
-import Shuttles from "./Shuttles";
+import Trips from "../shuttles/Trips";
+import Shuttles from "../shuttles/Shuttles";
 
 class Dashboard extends Component {
   render() {

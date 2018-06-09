@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Spinner from "../common/Spinner";
 
 class Trips extends Component {
   constructor(props) {
@@ -20,7 +21,8 @@ class Trips extends Component {
 
   render() {
     if (!this.state.trips) {
-      return <div>Loading...</div>;
+      // return <div>Loading...</div>;
+      return <Spinner />;
     }
 
     return (

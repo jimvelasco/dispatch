@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // we need these so app remembers if person is logged on
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -8,12 +8,14 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
 
+import PrivateRoute from "./components/common/PrivateRoute";
+
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import Shuttles from "./components/shuttles/Shuttles";
 import Trips from "./components/shuttles/Trips";
-import Dashboard from "./components/shuttles/Dashboard";
+import Dashboard from "./components/dashboard/Dashboard";
 import TripEdit from "./components/shuttles/TripEdit";
 
 // import ModalDialog from "./components/shuttles/ModalDialog";
@@ -43,7 +45,7 @@ if (localStorage.jwtToken) {
     window.location.href = "/login";
   }
 }
-
+// we need to wrap privateroutes in switch because pr has a redirect in it.
 class App extends Component {
   render() {
     return (
@@ -56,9 +58,12 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               {/* <Route exact path="/thumbs" component={Thumbs} /> */}
-              <Route exact path="/shuttles" component={Shuttles} />
-              <Route exact path="/trips" component={Trips} />
-              <Route exact path="/dashboard" component={Dashboard} />
+              <Switch>
+                <PrivateRoute exact path="/shuttles" component={Shuttles} />
+                <PrivateRoute exact path="/trips" component={Trips} />
+
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
               <Route exact path="/tripedit" component={TripEdit} />
             </div>
 
