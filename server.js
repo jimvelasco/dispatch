@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
+const morgan = require('morgan');
 
 const path = require("path");
 
@@ -18,6 +19,10 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// API Call logging middleware
+
+app.use(morgan('tiny'));
+
 // DB config
 
 const db = require("./config/keys").mongoURI;
@@ -26,8 +31,8 @@ const db = require("./config/keys").mongoURI;
 
 mongoose
   .connect(db)
-  .then(() => console.log("Mongo Connected"))
-  .catch(err => console.log(err));
+  .then(() => { return console.log("Mongo Connected") })
+  .catch((err) => { return console.log(err) });
 
 // app.get("/", (req, res) => res.send("Hello World.  This is JJV"));
 
