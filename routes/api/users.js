@@ -18,7 +18,12 @@ const User = require("../../models/User");
 
 router.get("/test", (req, res) => res.json({ msg: "users works" }));
 
-router.get("/", (req, res) => res.json({ msg: "gets all users" }));
+router.get("/", (req, res) => {
+  // User.find().then((users) => {
+    // console.log(users);
+    res.json({ msg: "gets all users" });
+  // });
+});
 
 // @route   GET api/users/register
 // @desc    Tests users route
