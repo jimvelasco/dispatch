@@ -1,118 +1,70 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { logoutUser } from "../../actions/authActions";
+import React from 'react';
+import './css/navbar.css';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
 
-class Navbar extends Component {
-  onLogoutClick(e) {
-    e.preventDefault();
-    //this.props.clearCurrentProfile();
-    this.props.logoutUser();
-    window.location.href = "/";
-    // this.props.history.push("/");
+export default class Example extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
   }
   render() {
-    const { isAuthenticated, user } = this.props.auth; // shorthand
-
-    const authLinks = (
-      <ul className="navbar-nav ml-auto">
-        {/* <li className="nav-item">
-        <Link className="nav-link" to="/feed">
-          Post Feed
-        </Link>
-      </li> */}
-        <li className="nav-item">
-          <Link className="nav-link" to="/dashboard">
-            Dashboard
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/shuttles">
-            Shuttles
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/trips">
-            Trips
-          </Link>
-        </li>
-        <li className="nav-item">
-          <a
-            href=""
-            onClick={this.onLogoutClick.bind(this)}
-            className="nav-link"
-          >
-            <img
-              className="rounded-circle"
-              src={user.avatar}
-              alt={user.name}
-              style={{ width: "25px", marginRight: "5px" }}
-              title="You must have a Gravatar connected to your email to display an image"
-            />{" "}
-            Logout
-          </a>
-        </li>
-      </ul>
-    );
-
-    const guestLinks = (
-      <ul className="navbar-nav ml-auto">
-        <li className="nav-item">
-          <Link to="/register" className="nav-link">
-            Sign Up
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/login" className="nav-link">
-            Login
-          </Link>
-        </li>
-      </ul>
-    );
     return (
       <div>
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
-          <div className="container">
-            <Link to="/" className="navbar-brand">
-              Home
-            </Link>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#mobile-nav"
-            >
-              <span className="navbar-toggler-icon" />
-            </button>
-
-            <div className="collapse navbar-collapse" id="mobile-nav">
-              {/* <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <Link to="/thumbs" className="nav-link">
-                    Thumbnails
-                  </Link>
-                </li>
-              </ul> */}
-              {isAuthenticated ? authLinks : guestLinks}{" "}
-            </div>
-          </div>
-        </nav>
+        <Navbar className="light-blu" dark expand="md">
+          <NavbarBrand href="/">DISPATCH</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="/dashboard">Dashboard</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/shuttles">Shuttles</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/trips">Trips</NavLink>
+              </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Options
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>
+                    Option 1
+                  </DropdownItem>
+                  <DropdownItem>
+                    Option 2
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    Reset
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          </Collapse>
+        </Navbar>
       </div>
     );
   }
 }
-
-Navbar.propTypes = {
-  logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
-};
-
-const mapStateToProps = state => ({
-  auth: state.auth
-});
-
-export default connect(
-  mapStateToProps,
-  { logoutUser }
-)(Navbar);

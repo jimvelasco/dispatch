@@ -11,6 +11,7 @@ import store from "./store";
 import PrivateRoute from "./components/common/PrivateRoute";
 
 import Navbar from "./components/layout/Navbar";
+// import NavbarOld from "./components/layout/NavbarOld";
 import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import Shuttles from "./components/shuttles/Shuttles";
