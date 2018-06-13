@@ -19,17 +19,17 @@ export default class Example extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
     };
   }
   toggle() {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
   }
   render() {
     return (
-      <div>
+      <div className="nav-cont">
         <Navbar className="light-blu" dark expand="md">
           <NavbarBrand href="/">DISPATCH</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
@@ -63,6 +63,7 @@ export default class Example extends React.Component {
               </UncontrolledDropdown>
             </Nav>
           </Collapse>
+          <img className="avatar" src="https://avatars2.githubusercontent.com/u/18405370?s=400&v=4" alt="avatar" />
         </Navbar>
       </div>
     );
