@@ -9,6 +9,16 @@
   border-radius: 3em;
 }
 
+.connection {
+  display: none;
+  height: 1em;
+  width: 1em;
+  background-color: #00D839;
+  border: 1px solid #fff;
+  border-radius: .5em;
+  transform: translateX(-1.5em);
+}
+
 .nav-cont {
   z-index: 100 !important;
   width: 100% !important;
@@ -21,9 +31,9 @@
 
 @media (min-width: 768px) {
   .navbar-nav {
-    margin-right: 8em;
+    margin-right: 6.5em;
   }
-  .avatar {
+  .avatar, .connection {
     display: block;
   }
 }

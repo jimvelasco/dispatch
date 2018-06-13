@@ -64,6 +64,7 @@ export default class Example extends React.Component {
             </Nav>
           </Collapse>
           <img className="avatar" src="https://avatars2.githubusercontent.com/u/18405370?s=400&v=4" alt="avatar" />
+          <div className="connection" />
         </Navbar>
       </div>
     );
