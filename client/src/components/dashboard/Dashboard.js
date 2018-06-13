@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import './Dashboard.css';
 
-import BookForm from '../shuttles/BookForm.js';
+import BookForm from '../shuttles/BookForm';
+import Trips from '../shuttles/Trips';
 
 class Dashboard extends Component {
   render() {
@@ -15,7 +16,9 @@ class Dashboard extends Component {
         </div>
         <div className="trips-progress" >
           <div className="sub-title" >TRIPS IN PROGRESS</div>
-          <div className="trips-ip" ></div>
+          <div className="trips-ip" >
+            <Trips />
+          </div>
         </div>
       </div>
     );

@@ -99,6 +99,32 @@
 }
 
 .trips-ip {
-  height: 13em;
+  background-color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  color: #808080;
+  font-size: 12px;
+  max-height: 300px !important;
+  overflow: auto;
+}
+
+.trips-ip table thead {
   background-color: #00BCF9;
+
+}
+
+.trips-ip table thead tr th {
+  color: #fff;
+  font-weight: 400;
+  border: 0px !important;
+}
+
+.trips-ip table tbody {
+  /* max-height: 250px !important;
+  overflow: auto; */
+}
+
+td:last-child,
+th:last-child {
+  text-align: center;
 }

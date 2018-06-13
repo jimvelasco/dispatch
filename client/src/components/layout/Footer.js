@@ -1,8 +1,9 @@
 import React from "react";
+import './css/footer.css';
 
 export default () => {
   return (
-    <footer className="bg-dark text-white p-4 text-center">
+    <footer className="text-white p-4 text-center">
       Copyright &copy; {new Date().getFullYear()} Dispatch
     </footer>
   );
