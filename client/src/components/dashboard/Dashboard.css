@@ -1,0 +1,6 @@
+.dashboard-wrap {
+  height: 85vh;
+  background-image: url("../../img/steamboat-map.png");
+  background-position: center;
+  background-size: cover;
+}
